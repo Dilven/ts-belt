@@ -4,7 +4,7 @@ import { S } from '../../dist/cjs'
 
 describe('trim', () => {
   it('provides correct types', () => {
-    expectType<string>(S.trim('text'))
+    expectType<string>(S.trimStart('text'))
   })
 
   it('returns a new string with leading whitespace removed from string', () => {
