@@ -41,10 +41,6 @@ export declare function toLowerCase(str: string): string
 
 export declare function toUpperCase(str: string): string
 
-/** Returns a new string with leading and trailing whitespace removed from `str`. */
-
-export declare function trim(str: string): string
-
 /** Returns `true` if the provided string is empty. */
 
 export declare function isEmpty(str: string): boolean
@@ -212,3 +208,15 @@ export declare function get(n: number): (str: string) => Option<string>
 /** Creates an array with one character of `str` per element. */
 
 export declare function toArray(str: string): ReadonlyArray<string>
+
+/** Returns a new string with leading and trailing whitespace removed from `str`. */
+
+export declare function trim(str: string): string
+
+/** Returns a new string with leading whitespace removed from `str`. */
+
+export declare function trimStart(str: string): string
+
+/** Returns a new string with trailing whitespace removed from `str`. */
+
+export declare function trimEnd(str: string): string

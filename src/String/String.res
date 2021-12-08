@@ -30,9 +30,6 @@ export toLowerCase = str => Js.String2.toLowerCase(str)
 %comment("Converts `str` to upper case.")
 export toUpperCase = str => Js.String2.toUpperCase(str)
 
-%comment("Returns a new string with leading and trailing whitespace removed from `str`.")
-export trim = str => Js.String2.trim(str)
-
 %comment("Returns `true` if the provided string is empty.")
 export isEmpty = str => length(str) === 0
 
@@ -135,3 +132,24 @@ export get = (str, n) => {
 
 %comment("Creates an array with one character of `str` per element.")
 export toArray = str => Belt.Array.makeByU(length(str), (. index) => getUnsafe(str, index))
+
+
+%comment("Returns a new string with leading and trailing whitespace removed from `str`.")
+export trim = str => Js.String2.trim(str)
+
+%comment("Returns a new string with leading whitespace removed from `str`.")
+export trimStart = str => {
+  let xs = split(str, "")
+  let index = Js.Array2.findIndex(xs, (char) => char != " ")
+  let trimmed = Belt.Array.sliceToEnd(xs, index)
+  Js.Array2.joinWith(trimmed, "")
+}
+
+%comment("Returns a new string with trailing whitespace removed from `str`.")
+export trimEnd = str => {
+  let xs = split(str, "")
+  let reversedStr = Js.Array2.joinWith(Belt.Array.reverse(xs), "")
+  let trimmed = trimStart(reversedStr)
+  let trimmedXs = split(trimmed, "")
+  Js.Array2.joinWith(Belt.Array.reverse(trimmedXs), "")
+}
